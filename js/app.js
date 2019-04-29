@@ -50,7 +50,8 @@ Player.prototype.update = function() {
     this.x = 400;
   }
   if (this.y < -20) {
-    this.y = 500
+    this.y = 400;
+    this.x = 200;
   }
   if (this.x < 0) {
     this.x = 0;
