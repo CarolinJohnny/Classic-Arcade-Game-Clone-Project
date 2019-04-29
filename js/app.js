@@ -8,7 +8,7 @@ var Enemy = function(row, column, speed) {
 
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
-  this.sprite = 'images/enemy-bug.png';
+  this.sprite = 'images/Star.png';
 };
 
 // Update the enemy's position, required method for game
@@ -20,7 +20,7 @@ Enemy.prototype.update = function(dt) {
       this.x += dt * this.speed;
       if(this.x>=505) {
         this.x = -60;
-        this.speed = 100 + Math.floor(Math.random()*100+1)
+        this.speed = 200 + Math.floor(Math.random()*100+1)
       }
 
 
@@ -32,14 +32,14 @@ Enemy.prototype.render = function() {
 };
 
 // Now write your own player class
-var Player = function(row, column) {
+var Player = function(row, column, speed) {
     this.x = row;
     this.y = column;
-
+    this.speed = speed;
 
   // The image/sprite for our player, this uses
   // a helper we've provided to easily load images
-  this.sprite = 'images/char-boy.png';
+  this.sprite = 'images/char-princess-girl.png';
 };
 
 // This class requires an update() method
@@ -74,7 +74,7 @@ Player.prototype.handleInput = function() {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-let allEnemies = [new Enemy(0, 60, 50), new Enemy(0, 120, 80),new Enemy(0, 180, 90)];
+let allEnemies = [new Enemy(0, 75, 230), new Enemy(0, 160, 400),new Enemy(0, 240, 500),new Enemy(0, 75, 230)];
 // Place the player object in a variable called player
 let player = new Player(200,500);
 
