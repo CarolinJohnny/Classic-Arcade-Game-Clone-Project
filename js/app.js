@@ -49,9 +49,11 @@ Player.prototype.update = function() {
   if (this.x > 400) {
     this.x = 400;
   }
-  if (this.y < -20) {
+  if (this.y < -19) {
     this.y = 400;
     this.x = 200;
+    modal.classList.toggle("show-modal");
+    modal.classList.toggle(".again-button");
   }
   if (this.x < 0) {
     this.x = 0;
@@ -105,3 +107,7 @@ document.addEventListener('keyup', function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// Modal Popup
+let modal = document.querySelector(".modal");
+let againButton = document.querySelector(".again-button");
