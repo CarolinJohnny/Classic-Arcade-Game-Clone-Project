@@ -1,7 +1,10 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(row, column, speed) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
+  this.x = row;
+  this.y = column;
+  this.speed = speed;
 
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
@@ -14,6 +17,13 @@ Enemy.prototype.update = function(dt) {
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
+      this.x += dt * this.speed;
+      if(this.x>=505) {
+        this.x = -60;
+        this.speed = 100 + Math.floor(Math.random()*100+1)
+      }
+
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -22,24 +32,36 @@ Enemy.prototype.render = function() {
 };
 
 // Now write your own player class
-var Player = function() {
-
+var Player = function(row, column) {
+    this.x = row;
+    this.y = column;
 
 
   // The image/sprite for our player, this uses
   // a helper we've provided to easily load images
-  this.sprite = 'images/char-cat-girl.png';
+  this.sprite = 'images/char-boy.png';
 };
 
 // This class requires an update() method
 Player.prototype.update = function() {
-
+  if(this.y> 400) {
+    this.y = 400;
+  }
+  if(this.x> 400) {
+    this.x = 400;
+  }
+if ( this.y < 0) {
+    this.y = 0;
+}
+if (this.x < 0) {
+  this.x = 0;
+}
 
 };
 
 //This class requires a render() method
 Player.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // This class requires a handleInput() method.
@@ -52,9 +74,9 @@ Player.prototype.handleInput = function() {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-let allEnemies = [];
+let allEnemies = [new Enemy(0, 60, 50), new Enemy(0, 120, 80),new Enemy(0, 180, 90)];
 // Place the player object in a variable called player
-let player =
+let player = new Player(200,500);
 
 
   // This listens for key presses and sends the keys to your
