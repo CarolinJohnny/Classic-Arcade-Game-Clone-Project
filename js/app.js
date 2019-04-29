@@ -17,11 +17,11 @@ Enemy.prototype.update = function(dt) {
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
-      this.x += dt * this.speed;
-      if(this.x>=505) {
-        this.x = -60;
-        this.speed = 200 + Math.floor(Math.random()*100+1)
-      }
+  this.x += dt * this.speed;
+  if (this.x >= 505) {
+    this.x = -60;
+    this.speed = 200 + Math.floor(Math.random() * 100 + 1)
+  }
 
 
 };
@@ -33,9 +33,8 @@ Enemy.prototype.render = function() {
 
 // Now write your own player class
 var Player = function(row, column, speed) {
-    this.x = row;
-    this.y = column;
-    this.speed = speed;
+  this.x = row;
+  this.y = column;
 
   // The image/sprite for our player, this uses
   // a helper we've provided to easily load images
@@ -44,28 +43,42 @@ var Player = function(row, column, speed) {
 
 // This class requires an update() method
 Player.prototype.update = function() {
-  if(this.y> 400) {
+  if (this.y > 400) {
     this.y = 400;
   }
-  if(this.x> 400) {
+  if (this.x > 400) {
     this.x = 400;
   }
-if ( this.y < 0) {
-    this.y = 0;
-}
-if (this.x < 0) {
-  this.x = 0;
-}
+  if (this.y < -20) {
+    this.y = 500
+  }
+  if (this.x < 0) {
+    this.x = 0;
+  }
 
 };
 
 //This class requires a render() method
 Player.prototype.render = function() {
-ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // This class requires a handleInput() method.
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(KeyDown) {
+  switch (KeyDown) {
+    case 'left':
+      this.x -= 60;
+      break;
+    case 'up':
+      this.y -= 60;
+      break;
+    case 'right':
+      this.x += 60;
+      break;
+    case 'down':
+      this.y += 60;
+      break;
+  }
 
 
 
@@ -74,20 +87,20 @@ Player.prototype.handleInput = function() {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-let allEnemies = [new Enemy(0, 75, 230), new Enemy(0, 160, 400),new Enemy(0, 240, 500),new Enemy(0, 75, 230)];
+let allEnemies = [new Enemy(0, 75, 230), new Enemy(0, 160, 400), new Enemy(0, 240, 500), new Enemy(0, 75, 230)];
 // Place the player object in a variable called player
-let player = new Player(200,500);
+let player = new Player(200, 500);
 
 
-  // This listens for key presses and sends the keys to your
-  // Player.handleInput() method. You don't need to modify this.
-  document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-      37: 'left',
-      38: 'up',
-      39: 'right',
-      40: 'down'
-    };
+// This listens for key presses and sends the keys to your
+// Player.handleInput() method. You don't need to modify this.
+document.addEventListener('keyup', function(e) {
+  var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
 
-    player.handleInput(allowedKeys[e.keyCode]);
-  });
+  player.handleInput(allowedKeys[e.keyCode]);
+});
