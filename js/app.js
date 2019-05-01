@@ -22,9 +22,13 @@ Enemy.prototype.update = function(dt) {
     this.x = -60;
     this.speed = 200 + Math.floor(Math.random() * 100 + 1)
   }
-
-
+  if(player.x + 50 > this.x && player.x < this.x + 50 && player.y < this.y + 50
+   && player.y +50 > this.y) {
+      player.reset();
+    }
 };
+
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -32,7 +36,7 @@ Enemy.prototype.render = function() {
 };
 
 // Now write your own player class
-var Player = function(row, column, speed) {
+var Player = function(row, column) {
   this.x = row;
   this.y = column;
 
@@ -53,7 +57,6 @@ Player.prototype.update = function() {
     this.y = 400;
     this.x = 200;
     modal.classList.toggle("show-modal");
-    modal.classList.toggle(".again-button");
   }
   if (this.x < 0) {
     this.x = 0;
@@ -66,20 +69,25 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.reset = function(){
+  this.x = 200;
+  this.y = 500;
+};
+
 // This class requires a handleInput() method.
 Player.prototype.handleInput = function(KeyDown) {
   switch (KeyDown) {
     case 'left':
-      this.x -= 60;
+      this.x -= 90;
       break;
     case 'up':
-      this.y -= 60;
+      this.y -= 90;
       break;
     case 'right':
-      this.x += 60;
+      this.x += 90;
       break;
     case 'down':
-      this.y += 60;
+      this.y += 90;
       break;
   }
 
