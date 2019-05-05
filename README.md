@@ -3,18 +3,9 @@
 ## Table of Contents
 
 - [Instructions](#instructions)
-- [Contributing](#contributing)
 
 ## Instructions
 
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
+In this game the Princess has to avoid to collide with the stars flying around and to reach the water at the top of the game to win. If a collision will take place you have to start from the beginning. When you won the game, you have the possibility to play it again from the start as often as you want.
 
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
-
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+The game is build with Object-Oriented JavaScript. Open the Index.html file. You can move the Player up, down, left and right with the Arrow keys.

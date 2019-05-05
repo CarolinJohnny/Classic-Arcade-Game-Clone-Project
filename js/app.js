@@ -118,4 +118,4 @@ document.addEventListener('keyup', function(e) {
 
 // Modal Popup
 let modal = document.querySelector(".modal");
-let againButton = document.querySelector(".again-button");
+//let againButton = document.querySelector(".again-button");
